@@ -14,7 +14,7 @@ public interface AccountService {
 
 	public int idCheck(String userId) throws Exception;
 
-	public List<userDto> requestUserList() throws Exception;
+	public Page<userDto> requestUserList(int pageNum) throws Exception;
 
 	public void banUser(String userId) throws Exception;
 

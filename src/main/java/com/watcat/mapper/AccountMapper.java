@@ -18,7 +18,7 @@ public interface AccountMapper {
 
 	public int idCheck(String userId)throws Exception;
 
-	public List<userDto> requestUserList()throws Exception;
+	public Page<userDto> requestUserList()throws Exception;
 
 	public void banUser(String userId)throws Exception;
 

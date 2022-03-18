@@ -38,7 +38,9 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public List<userDto> requestUserList() throws Exception {
+	public Page<userDto> requestUserList(int pageNum) throws Exception {
+		
+		PageHelper.startPage(pageNum,10);
 		
 		return accountMapper.requestUserList();
 	}

@@ -115,6 +115,9 @@
 							</table>
 							
 				 			<ul class="pagination d-flex justify-content-center">
+						 		<li class="page-item" th:classappend="${reviewList.getPrePage()}==0 ? 'disabled'">
+							      <a class="page-link text-black" th:href="@{/admin/review(pageNum=1)}">&laquo;</a>
+							    </li>
 								<li class="page-item" th:classappend="${reviewList.getPrePage()} == 0 ? 'disabled'">
 									<a class="page-link text-black" th:href="@{/admin/review(pageNum=${reviewList.getPrePage()})}">&lt;</a>
 								</li>
@@ -124,6 +127,9 @@
 								<li class="page-item" th:classappend="${reviewList.getNextPage()} == 0 ? 'disabled'">
 									<a class="page-link text-black" th:href="@{/admin/review(pageNum=${reviewList.getNextPage()})}">&gt;</a>
 								</li>
+								<li class="page-item" th:classappend="${reviewList.getNextPage()}==0 ? 'disabled'">
+							      <a class="page-link text-black" th:href="@{/admin/review(pageNum=${reviewList.getPages})}">&raquo;</a>
+							    </li>
 							</ul>
 						</div>
 					</div>	

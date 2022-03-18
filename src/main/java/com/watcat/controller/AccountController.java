@@ -127,17 +127,16 @@ public class AccountController {
 	//계정관리 페이지
 	
 	@RequestMapping(value="/admin/account",method=RequestMethod.GET)
-	public ModelAndView requestUserList() throws Exception{
+	public ModelAndView requestUserList(@RequestParam(required = false,defaultValue = "1") int pageNum) throws Exception{
 		ModelAndView mv = new ModelAndView("account/admin/accountManagement");
 		
-		List<userDto> userList = new ArrayList<>();
-		
-		userList = accountService.requestUserList();
+		PageInfo<userDto> userList = new PageInfo<>(accountService.requestUserList(pageNum),10);
 		
 		mv.addObject("userList", userList);
 		
 		return mv;
 	}
+
 	
 	//계정 정지,해제
 	@ResponseBody
