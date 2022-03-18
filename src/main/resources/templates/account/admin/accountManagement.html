@@ -104,9 +104,9 @@
 							<td th:if="${item.deletedYn}=='Y'">정지</td>
 							<td th:if="${item.deletedYn}=='N'">활성</td>
 							<td>
-								<button th:if="${item.deletedYn}=='N'" class="btn btn-danger" th:onclick="banUser([[${item.userId}]],'no')">계정정지</button>
-								<button th:if="${item.deletedYn}=='Y'" class="btn btn-primary" th:onclick="banUser([[${item.userId}]],'yes')">계정활성</button>
-								<button class="btn btn-warning" th:onclick="deleteUser([[${item.userId}]])">계정삭제</button>
+								<button th:if="${item.deletedYn}=='N'" class="btn btn-danger mt-1" th:onclick="banUser([[${item.userId}]],'no')">계정정지</button>
+								<button th:if="${item.deletedYn}=='Y'" class="btn btn-primary mt-1" th:onclick="banUser([[${item.userId}]],'yes')">계정활성</button>
+								<button class="btn btn-warning mt-1" th:onclick="deleteUser([[${item.userId}]])">계정삭제</button>
 							</td>					
 						</tr>                 
                    </table>

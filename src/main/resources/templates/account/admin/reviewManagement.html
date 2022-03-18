@@ -80,7 +80,7 @@
 <body class="bg-black">
     <div class="h-100">
         <!-- 헤더 영역 -->
-        <header th:include="Header :: header" class="fixed-top px-0 mx-0">
+        <header th:include="Header :: header" >
         </header>
         
         <div class="row h-100 bg2ndColor">
@@ -88,7 +88,7 @@
             <nav th:include="/Mypage/nav :: nav" class="col-lg-2 px-5">
             </nav>
             <!-- 메인영역 -->
-            <main class="col-lg-9 bg-black text-white" style="padding-top: 100px;">    
+            <main class="col-lg-9 bg-black text-white"  >    
         		<div class="m-3">
                    <h2 class="text-white my-3">리뷰 관리</h2>
                    <hr class="text-white">	        	
@@ -127,7 +127,7 @@
 											    <button class="my-1 btn btn-sm btn-primary" th:if="${item.deletedYn}=='N'"  type="button" th:onclick="|javascript:deleteReview(${item.idx},'no')|">리뷰 삭제</button>
 											    <button class="my-1 btn btn-sm btn-secondary" th:if="${item.deletedYn}=='Y'" type="button" th:onclick="|javascript:deleteReview(${item.idx},'yes')|">리뷰재게시</button>
 											    <button class="my-1 btn btn-sm btn-danger" th:onclick="|javascript:PDeleteReview(${item.idx})|">리뷰영구제거</button>
-											    <button class="my-1 btn btn-sm btn-warning"th:onclick='banUser([[${item.userId}]])'>계정 정지</button>	
+											    <button class="my-1  btn btn-sm btn-warning"th:onclick='banUser([[${item.userId}]])'>계정 정지</button>	
 										</td>
 									</tr>
 								</tbody>
