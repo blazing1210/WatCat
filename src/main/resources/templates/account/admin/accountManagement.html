@@ -8,39 +8,58 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.9/dist/sweetalert2.all.min.js"></script>
 <script>
 	let N = "no";
 	let Y = "yes";
 	//계정영구삭제
 	function deleteUser(userId){
-		$.ajax({
-			url:"/admin/account",
-			type:"DELETE",
-			data:{userId:userId},
-			success:function(){
-				location.reload();
-				alert("계정이 삭제 되었습니다");
-			},
-			error:function(){
-				alert("서버와의 연결이 불안정합니다.")
-			}
-		});
+		Swal.fire({
+			
+			title : "계정을 삭제하시겠습니까?",
+			text : "삭제한 계정은 영구히 삭제되고 복구할 수 없습니다",
+			icon : "warning",
+			 showCancelButton: true,
+			 cancelButtonText : "취소",
+			confirmButtonText : "삭제",
+
+
+			}).then(result=>{
+				if(result.isConfirmed){
+					
+					$.ajax({
+						url:"/admin/account",
+						type:"DELETE",
+						data:{userId:userId},
+						success:function(){
+							location.reload();
+						},
+						error:function(){
+							location.reload();
+						}
+					});
+				}	
+			});		
 	};	
 	
 	//계정정지
 	function banUser(userId,account){
-		$.ajax({
-			url:"/admin/account",
-			type:"PUT",
-			data:{userId:userId,account:account},
-			success:function(){
-				location.reload();
-				alert("계정이 정지 되었습니다");
-			},
-			error:function(){
-				alert("서버와의 연결이 불안정합니다.")
-			}
-		});	
+
+			$.ajax({
+				url:"/admin/account",
+				type:"PUT",
+				data:{userId:userId,account:account},
+				success:function(){
+
+					location.reload();
+			
+				},
+				error:function(){
+					alert("서버와의 연결이 불안정합니다.");
+				}
+			});	
+		
 	};
 	
 	
@@ -54,7 +73,7 @@
         
         <div class="row h-100 bg2ndColor">
             <!-- 네비게이션 영역 -->
-            <nav th:include="/Mypage/nav :: nav" class="col-lg-3 px-5">
+            <nav th:include="/Mypage/nav :: nav" class="col-lg-2 px-5">
             </nav>
             <!-- 메인영역 -->
             <main class="col-lg-9 bg-black text-white"  style="padding-top: 100px;">    

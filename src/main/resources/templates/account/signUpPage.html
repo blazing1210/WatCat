@@ -158,7 +158,7 @@ $(document).ready(function(){
 		if(e.keyCode=='13'){
 			
 			if($("#btn-ajax-signup").attr("disabled")){
-				alert("이메일과 비밀번호를 형식에 맞게 입력해주세요.");
+				$("#login-state").text("이메일과 비밀번호를 형식에 맞게 입력해주세요.");
 			}else{
 				signupFunction(userId.val(),userPw.val(),userPwCheck.val());
 			}
